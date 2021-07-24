@@ -50,7 +50,7 @@ spec:
       volumes:
       - name: docker
         hostPath:
-          path: {{ .Values.containerd.endpoint }}
+          path: {{ .Values.container.endpoint }}
       {{- if .Values.auth.setup }}
       - name: secret-volume
         secret:
