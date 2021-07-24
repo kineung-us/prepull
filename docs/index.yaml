@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   prepull:
   - apiVersion: v2
+    appVersion: 0.0.7
+    created: "2021-07-24T16:26:09.557947524Z"
+    description: A Helm chart for Kubernetes
+    digest: baa3d192ac4ec7f518d5d4e91f2b4078188b917d7da2a11b5ecdf4b73e277032
+    name: prepull
+    type: application
+    urls:
+    - https://kineung-us.github.io/prepull/prepull-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
     appVersion: 0.0.6
-    created: "2021-07-24T15:07:11.819994554Z"
+    created: "2021-07-24T16:26:09.557634527Z"
     description: A Helm chart for Kubernetes
     digest: 39d117d0ae82ea6ecb0955cb82a6a844a045eda8cb48a4b5a21a6f4d768c520c
     name: prepull
@@ -13,7 +23,7 @@ entries:
     version: 0.0.6
   - apiVersion: v2
     appVersion: 0.0.5
-    created: "2021-07-24T15:07:11.819146047Z"
+    created: "2021-07-24T16:26:09.557273131Z"
     description: A Helm chart for Kubernetes
     digest: cf3c450b2bdaddae31f460ee6671f5316fd913af3d73f7a126b3940f70688d8e
     name: prepull
@@ -23,7 +33,7 @@ entries:
     version: 0.0.5
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2021-07-24T15:07:11.818616943Z"
+    created: "2021-07-24T16:26:09.556831835Z"
     description: A Helm chart for Kubernetes
     digest: 16f639843ab768686e92a3c263cd88e54ac65f6216688410aa64459e73ab8526
     name: prepull
@@ -33,7 +43,7 @@ entries:
     version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.3
-    created: "2021-07-24T15:07:11.817980238Z"
+    created: "2021-07-24T16:26:09.556477739Z"
     description: A Helm chart for Kubernetes
     digest: 5b55054a8b43cac7d01a1c3ed64a472c5772f7aff8e3511405d5e0fc86208b65
     name: prepull
@@ -43,7 +53,7 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2021-07-24T15:07:11.817403533Z"
+    created: "2021-07-24T16:26:09.556088543Z"
     description: A Helm chart for Kubernetes
     digest: f466af70e4f4dbbd6c587cb6a36d7079d2f241ce9fd08e50b0e71340e1c5a00b
     name: prepull
@@ -51,4 +61,4 @@ entries:
     urls:
     - https://kineung-us.github.io/prepull/prepull-0.0.2.tgz
     version: 0.0.2
-generated: "2021-07-24T15:07:11.816782528Z"
+generated: "2021-07-24T16:26:09.555225751Z"
