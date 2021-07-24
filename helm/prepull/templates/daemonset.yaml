@@ -17,7 +17,7 @@ spec:
     spec:
       initContainers:
       - name: "{{ include "prepull.name" . }}"
-        image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image:  "ghcr.io/kineung-us/prepull:{{ .Chart.AppVersion }}"
         {{- if .Values.auth.setup }}
         command: 
         - sh
