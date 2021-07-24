@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "prepull.name" . }}
+  labels:
+    {{- include "prepull.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "prepull.name" . }}
+      {{- include "prepull.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "prepull.name" . }}
+        {{- include "prepull.selectorLabels" . | nindent 8 }}
+    spec:
+      initContainers:
+      - name: "{{.Release.Name}}"
+        image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        command: 
+        - sh
+        - "-c"
+        - |
+          /bin/sh <<'EOF'
+
+          USER=$(cat /root/auth/.dockerconfigjson | jq -r '.auths."{{ .Values.image.target.registry }}".username')
+          PW=$(cat /root/auth/.dockerconfigjson | jq -r '.auths."{{ .Values.image.target.registry }}".password')
+          crictl pull --creds $USER:$PW {{ .Values.image.target.registry }}/{{ .Values.image.target.repository }}:{{ .Values.image.target.tag }}
+          crictl images
+          EOF
+
+        volumeMounts:
+        - name: docker
+          mountPath: /run/containerd
+        - name: secret-volume
+          mountPath: /root/auth
+          readOnly: true
+      volumes:
+      - name: docker
+        hostPath:
+          path: /run/containerd
+      - name: secret-volume
+        secret:
+          secretName: {{ .Values.auth.dockerconfigjson }}
+      containers:
+      - name: pause
+        image: gcr.io/google_containers/pause

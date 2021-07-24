@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "prepull.name" . }}
+  labels:
+    {{- include "prepull.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      name: {{ include "prepull.name" . }}
+      labels:
+        {{- include "prepull.labels" . | nindent 8 }}
+    spec:
+      restartPolicy: Never
+      serviceAccountName: {{ include "prepull.name" . }}-sa
+      containers:
+      - name: post-install-job
+        image: "alpine/helm:3.6.3"
+        command: ["helm", "uninstall", "{{ .Release.Name }}"]

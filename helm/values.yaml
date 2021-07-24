@@ -1,0 +1,11 @@
+image:
+  registry: "ghcr.io"
+  repository: "kineung-us/prepull"
+  tag: "0.0.1"
+  target:
+    registry: ""
+    repository: ""
+    tag: ""
+
+auth:
+  dockerconfigjson: ""
