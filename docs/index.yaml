@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   prepull:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2021-07-24T13:14:15.348050803Z"
+    description: A Helm chart for Kubernetes
+    digest: 16f639843ab768686e92a3c263cd88e54ac65f6216688410aa64459e73ab8526
+    name: prepull
+    type: application
+    urls:
+    - https://kineung-us.github.io/prepull-aks-acr/prepull-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
-    created: "2021-07-24T11:48:48.493683878Z"
+    created: "2021-07-24T13:14:15.347360584Z"
     description: A Helm chart for Kubernetes
     digest: 5b55054a8b43cac7d01a1c3ed64a472c5772f7aff8e3511405d5e0fc86208b65
     name: prepull
@@ -13,7 +23,7 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2021-07-24T11:48:48.493352574Z"
+    created: "2021-07-24T13:14:15.346964273Z"
     description: A Helm chart for Kubernetes
     digest: f466af70e4f4dbbd6c587cb6a36d7079d2f241ce9fd08e50b0e71340e1c5a00b
     name: prepull
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://kineung-us.github.io/prepull-aks-acr/prepull-0.0.2.tgz
     version: 0.0.2
-generated: "2021-07-24T11:48:48.492629965Z"
+generated: "2021-07-24T13:14:15.346202052Z"
