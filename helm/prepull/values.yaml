@@ -8,7 +8,11 @@ image:
     tag: ""
 
 auth:
+  setup: false
   dockerconfigjson: ""
+
+container:
+  endpoint: "/run/containerd"
 
 rbac:
   setup: false

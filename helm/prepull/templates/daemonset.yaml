@@ -18,31 +18,44 @@ spec:
       initContainers:
       - name: "{{ include "prepull.name" . }}"
         image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        {{- if .Values.auth.setup }}
         command: 
         - sh
         - "-c"
         - |
           /bin/sh <<'EOF'
-
           USER=$(cat /root/auth/.dockerconfigjson | jq -r '.auths."{{ .Values.image.target.registry }}".username')
           PW=$(cat /root/auth/.dockerconfigjson | jq -r '.auths."{{ .Values.image.target.registry }}".password')
-          crictl pull --creds $USER:$PW {{ .Values.image.target.registry }}/{{ .Values.image.target.repository }}:{{ .Values.image.target.tag }}
+          crictl pull --creds $USER:$PW -r {{ .Values.container.endpoint }} -i {{ .Values.container.endpoint }} {{ .Values.image.target.registry }}/{{ .Values.image.target.repository }}:{{ .Values.image.target.tag }}
           crictl images
           EOF
-
+        {{- else }}
+        command: 
+        - sh
+        - "-c"
+        - |
+          /bin/sh <<'EOF'
+          crictl pull -r {{ .Values.container.endpoint }} -i {{ .Values.container.endpoint }} {{ .Values.image.target.registry }}/{{ .Values.image.target.repository }}:{{ .Values.image.target.tag }}
+          crictl images
+          EOF
+        {{- end }}
         volumeMounts:
         - name: docker
-          mountPath: /run/containerd
+          mountPath: {{ .Values.container.endpoint }}
+        {{- if .Values.auth.setup }}
         - name: secret-volume
           mountPath: /root/auth
           readOnly: true
+        {{- end }}
       volumes:
       - name: docker
         hostPath:
-          path: /run/containerd
+          path: {{ .Values.containerd.endpoint }}
+      {{- if .Values.auth.setup }}
       - name: secret-volume
         secret:
           secretName: {{ .Values.auth.dockerconfigjson }}
+      {{- end }}
       containers:
       - name: pause
         image: gcr.io/google_containers/pause
