@@ -1,7 +1,7 @@
 # prepull with aks and acr (for now)
 
 [![Build and Push](https://github.com/kineung-us/prepull/actions/workflows/build.yaml/badge.svg)](https://github.com/kineung-us/prepull/actions/workflows/build.yaml)
-[![Release Helm](https://github.com/kineung-us/prepull/actions/workflows/chart.yaml/badge.svg)](https://github.com/kineung-us/prepull/actions/workflows/chart.yaml)
+[![Release Helm](https://github.com/kineung-us/prepull/actions/workflows/helm.yaml/badge.svg)](https://github.com/kineung-us/prepull/actions/workflows/helm.yaml)
 [![release](https://img.shields.io/github/v/release/kineung-us/prepull)](https://github.com/kineung-us/prepull/releases)
 
 prepull is a tool that downloads the images you want to use to each node in Kubernetes. You can also use the dockerconfigjson file for a pull of images in your private repositories.
