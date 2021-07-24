@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: {{ include "prepull.name" . }}
+  name: {{ include "prepull.fullname" . }}
   labels:
     {{- include "prepull.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      app: {{ include "prepull.name" . }}
+      app: {{ include "prepull.fullname" . }}
       {{- include "prepull.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ include "prepull.name" . }}
+        app: {{ include "prepull.fullname" . }}
         {{- include "prepull.selectorLabels" . | nindent 8 }}
     spec:
       initContainers:
-      - name: "{{.Release.Name}}"
+      - name: "{{ include "prepull.name" . }}"
         image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         command: 
         - sh
