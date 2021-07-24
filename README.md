@@ -1,4 +1,4 @@
-# prepull with aks and acr (for now)
+# prepull
 
 [![Build and Push](https://github.com/kineung-us/prepull/actions/workflows/build.yaml/badge.svg)](https://github.com/kineung-us/prepull/actions/workflows/build.yaml)
 [![Release Helm](https://github.com/kineung-us/prepull/actions/workflows/helm.yaml/badge.svg)](https://github.com/kineung-us/prepull/actions/workflows/helm.yaml)
