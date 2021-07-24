@@ -1,3 +1,4 @@
+{{- if .Values.rbac.setup -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -33,3 +34,4 @@ roleRef:
   kind: ClusterRole 
   name: {{ include "prepull.name" . }}-cr
   apiGroup: rbac.authorization.k8s.io
+{{- end }}
